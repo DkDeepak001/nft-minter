@@ -1,23 +1,25 @@
+import { Contract } from "ethers";
 import { ethers } from "hardhat";
+import { promises as fs } from "fs";
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
-
-  const lockedAmount = ethers.utils.parseEther("0.001");
-
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
-
-  await lock.deployed();
-
-  console.log(
-    `Lock with ${ethers.utils.formatEther(lockedAmount)}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
-  );
+  const Mint = await ethers.getContractFactory("Mint");
+  const mint = await Mint.deploy();
+  await mint.deployed();
+  console.log("Mint deployed to:", mint.address);
+  await deploymentInfo(mint);
 }
-
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
+async function deploymentInfo(contract: Contract) {
+  const data = {
+    contract: {
+      address: contract.address,
+      abi: contract.interface.format(),
+      signerAddress: contract.signer.address,
+    },
+  };
+  const content = JSON.stringify(data, null, 2);
+  await fs.writeFile("deployment.json", content);
+}
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
