@@ -9,7 +9,7 @@ contract Mint is ERC721URIStorage {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
-    constructor() ERC721("GameItem", "ITM") {}
+    constructor() ERC721("XGang!", "XGX") {}
 
     function mintToken(address to, string memory tokenURI)
         public
@@ -26,4 +26,6 @@ contract Mint is ERC721URIStorage {
     function getToken(uint id) public view returns (string memory) {
         return tokenURI(id);
     }
+
+
 }
