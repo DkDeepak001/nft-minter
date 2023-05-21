@@ -3,6 +3,7 @@ export const ABI: string[] = [
   "event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)",
   "event ApprovalForAll(address indexed owner, address indexed operator, bool approved)",
   "event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)",
+  "function _tokenIds() view returns (uint256 _value)",
   "function approve(address to, uint256 tokenId)",
   "function balanceOf(address owner) view returns (uint256)",
   "function getApproved(uint256 tokenId) view returns (address)",

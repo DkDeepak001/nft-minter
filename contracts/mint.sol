@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract Mint is ERC721URIStorage {
     using Counters for Counters.Counter;
-    Counters.Counter private _tokenIds;
+    Counters.Counter public _tokenIds;
 
     constructor() ERC721("XGang!", "XGX") {}
 
@@ -27,5 +27,5 @@ contract Mint is ERC721URIStorage {
         return tokenURI(id);
     }
 
-
+   
 }

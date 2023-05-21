@@ -1,11 +1,12 @@
 {
   "contract": {
-    "address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+    "address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
     "abi": [
       "constructor()",
       "event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)",
       "event ApprovalForAll(address indexed owner, address indexed operator, bool approved)",
       "event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)",
+      "function _tokenIds() view returns (uint256 _value)",
       "function approve(address to, uint256 tokenId)",
       "function balanceOf(address owner) view returns (uint256)",
       "function getApproved(uint256 tokenId) view returns (address)",
